@@ -442,15 +442,15 @@ def search():
     with open('UAE.dat','rb') as f:
         eid = int(input('Enter Emirates ID to be searched for: '))
         rec = []
-        f = 0
+        found = 0
         try:
             while True:
                 r = pickle.load(f)
                 if r[0] == eid:
-                    f = 1
+                    found = 1
                     rec = r
         except EOFError:
-            if f == 0:
+            if found == 0:
                 print('Emirates ID not found')
             else:
                 print(rec)
@@ -486,7 +486,7 @@ The structure of the file STUDENT is [ROLLNO,NAME,GENDER ,MARKS,DOB] .
 import os 
 
 def add():
-    with open('student.csv','a',newline='') as f:
+    with open('student.csv','w',newline='') as f:
         rollno = int(input('Enter roll no: '))
         name = input('Enter name: ')
         gender = input('Enter gender: ')
@@ -506,22 +506,22 @@ def display():
 def modify():
     with open('student.csv','r') as f:
         l = []
-        f = 0
+        found = 0
         rec = csv.reader(f)
-        l.append(next(rec))
         rollno = int(input('Enter rollno to be updated: '))
         for i in rec:
             if int(i[0])==rec:
                 i[3] = int(input('Enter new marks: '))
                 l.append(i)
-                f = 1 
+                found = 1 
             else:
                 l.append(i)
+                
     with open('student.csv','w',newline='') as f:
         rec = csv.writer(f)
         for i in l:
-            csv.writerow(i)
-    if f == 1:
+            rec.writerow(i)
+    if found == 1:
         print('Record Sucessfully Modified')
     else:
         print('Record not found')
@@ -578,17 +578,17 @@ def delete():
     with open('ITEM.dat','rb') as f:
         with open('temp.dat','wb') as f1:
             itemno = int(input('Enter item no to be deleted: '))
-            f = 0
+            found = 0
             try:
                 while True:
                     rec = pickle.load(f)
                     if rec[0] == itemno:
-                        f=1
+                        found = 1
                         pass
                     else:
                         pickle.dump(rec,f1)
             except EOFError:
-                if f == 0:
+                if found == 1:
                     print('Record Successfully Deleted')
                 else:
                     print('Record not found')
@@ -611,4 +611,4 @@ while True:
     elif o == 4:
         break
     else:
-        print('Invalid Option') '''  
+        print('Invalid Option')'''
