@@ -57,7 +57,7 @@ Structure of EMLOYEE table is [EMPNO,ENAME,JOB,SALARY,DOB,ADDRESS,DEPTNO].
 3.Display
 4.Exit'''
 
-import mysql.connector
+'''import mysql.connector
 mydb = mysql.connector.connect(host='localhost',user='root',passwd='2005',db='tests')
 mycursor = mydb.cursor()
 
@@ -106,7 +106,7 @@ while True:
     elif o == 4:
         break
     else:
-        print('Invalid Option')
+        print('Invalid Option')'''
 
 #3.
 
