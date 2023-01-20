@@ -55,10 +55,10 @@ Structure of EMLOYEE table is [EMPNO,ENAME,JOB,SALARY,DOB,ADDRESS,DEPTNO].
 1.Create
 2.Insert
 3.Display
-4.Exit'''
+4.Search'''
 
 '''import mysql.connector
-mydb = mysql.connector.connect(host='localhost',user='root',passwd='2005',db='tests')
+mydb = mysql.connector.connect(host='localhost',user='root',passwd='Emsitchaf1',db='practicalexam')
 mycursor = mydb.cursor()
 
 def create():
@@ -89,13 +89,23 @@ def display():
     x = mycursor.fetchall()
     for i in x:
         print(i)
+
+def search():
+    empno = int(input('Enter empno to be searched for: '))
+    mycursor.execute('SELECT * FROM EMPLOYEE WHERE EMPNO={}'.format(empno))
+    x = mycursor.fetchone()
+    if x == None:
+        print('Record Not Found')
+    else:
+        print(x)
         
 while True:
     print('MENU')
     print('1. Create')
     print('2. Insert')
     print('3. Display')
-    print('4. Exit')
+    print('4. Search')
+    print('5. Exit')
     o = int(input('Enter your choice: '))
     if o == 1:
         create()
@@ -104,9 +114,12 @@ while True:
     elif o == 3:
         display()
     elif o == 4:
+        search()
+    elif o == 5:
         break
     else:
-        print('Invalid Option')'''
+        print('Invalid Option')
+'''
 
 #3.
 
