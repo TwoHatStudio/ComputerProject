@@ -7,24 +7,25 @@ The structure of stack BOOK is [BOOKID,BOOKNAME]
 3. Display
 4. Exit'''
 
-'''stack = []
+'''
+BOOK = []
 
 def push():
     bookid = int(input('Enter book id: '))
     bookname = input('Enter book name: ')
     l = [bookid,bookname]
-    stack.append(l)
+    BOOK.append(l)
     
 def pop():
-    if len(stack) != 0:
-        print(stack.pop())
+    if len(BOOK) != 0:
+        print(BOOK.pop())
     else:
         print('Underflow')
 
 def display():
-    if len(stack) != 0:
-        for i in range(len(stack)-1,-1,-1):
-            print(stack[i])
+    if len(BOOK) != 0:
+        for i in range(len(BOOK)-1,-1,-1):
+            print(BOOK[i])
     else:
         print('Underflow')
         
